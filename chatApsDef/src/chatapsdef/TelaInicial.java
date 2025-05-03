@@ -14,9 +14,7 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
  */
 public class TelaInicial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaInicial
-     */
+    public int porta = 5000;
     public TelaInicial() {
         initComponents();
     }
@@ -125,9 +123,9 @@ public class TelaInicial extends javax.swing.JFrame {
         
         try{
         //Declarar o socket cliente
-        Socket cliente = new Socket(inp_IP.getText(), 7000);
+        Socket cliente = new Socket(inp_IP.getText(), porta);
         cliente.close();
-        TelaChat Chat = new TelaChat(inp_IP.getText(),inp_nome.getText());
+        TelaChat Chat = new TelaChat(inp_IP.getText(),inp_nome.getText(), porta);
         Chat.setVisible(true);
         dispose();
         
