@@ -50,6 +50,15 @@ public class Servidor {
             
             // Primeira mensagem do cliente deve ser o nome
             String nome = dado.readLine();
+            
+            // Verificar se o nome é null ou vazio
+            if (nome == null || nome.trim().isEmpty()) {
+                System.out.println("Cliente não enviou um nome válido. Conexão será fechada.");
+                cliente.close();
+                clientes.remove(cliente);
+                return;
+            }
+            else{
             clientesNomes.put(cliente, nome);
             
             // 1. Primeiro envia o histórico para o novo cliente
@@ -59,7 +68,7 @@ public class Servidor {
             String msgEntrada = nome + " entrou no chat.";
             System.out.println(msgEntrada);
             enviarParaTodos(msgEntrada, false); // false = não salvar no histórico
-            
+            }
             String mensagem;
             while ((mensagem = dado.readLine()) != null) {
                 String msgCompleta = nome + ": " + mensagem;
@@ -68,9 +77,11 @@ public class Servidor {
             }
         } catch (IOException e) {
             String nome = clientesNomes.get(cliente);
-            String msgSaida = nome + " saiu do chat.";
-            System.out.println(msgSaida);
-            enviarParaTodos(msgSaida, false); // false = não salvar no histórico
+            if (nome != null) { // Só envia mensagem de saída se o nome não for null
+                String msgSaida = nome + " saiu do chat.";
+                System.out.println(msgSaida);
+                enviarParaTodos(msgSaida, false); // false = não salvar no histórico
+            }
             clientes.remove(cliente);
             clientesNomes.remove(cliente);
         }
