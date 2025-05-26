@@ -1,0 +1,12 @@
+Fulano: jTextField1
+Fulano: 
+Fulano: 
+Fulano: 
+Fulano: teste 1
+Fulano: teste2
+Fulano: teste 3
+Fulano: teste 4
+Didica: Olá galerinha!
+Lukas: olá gente!
+Didica: tudo bem ?
+Lukas: tudo sim e com voce
