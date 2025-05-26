@@ -23,22 +23,16 @@ public class ChatApsDef {
         TelaLog.setVisible(true);
         try {
     for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-        if ("FlatLaf Dark".equals(info.getName())) {
+        if ("Nimbus".equals(info.getName())) {
             UIManager.setLookAndFeel(info.getClassName());
             break;
         }
     }
-} catch (Exception e) {
+} catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 // If Nimbus is not available, you can set the GUI to another look and feel.
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ChatApsDef.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(ChatApsDef.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(ChatApsDef.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (UnsupportedLookAndFeelException ex) {
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 Logger.getLogger(ChatApsDef.class.getName()).log(Level.SEVERE, null, ex);
             }
 }
